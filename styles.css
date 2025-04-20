@@ -103,3 +103,14 @@ footer {
     margin-right: 10px; /* Espaço entre a logo e o título */
     vertical-align: middle;
 }
+
+.bot-status {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.bot-status p {
+    margin: 5px 0;
+}
