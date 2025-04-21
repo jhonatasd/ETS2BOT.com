@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <!-- Barra Lateral -->
-        <aside class="sidebar" role="navigation" aria-label="Menu lateral"></aside>
+        <aside class="sidebar" role="navigation" aria-label="Menu lateral">
             <div class="logo">
                 <img src="src/assets/images/logo.png" alt="ETS2 Bot Logo">
                 <h1>ETS2 Bot</h1>
@@ -28,13 +28,15 @@
 
         <!-- Conteúdo Principal -->
         <main class="content">
-            <div id="home" class="tab-content">
+            <!-- Início -->
+            <section id="home" class="tab-content">
                 <h2>Bem-vindo ao ETS2 Bot</h2>
-                <p>O ETS2 Bot é um bot interativo para Discord que simula a experiência de gerenciamento de fretes no estilo Euro Truck Simulator 2. Aceite cargas, ganhe experiência, suba de nível e conquiste novos cargos!</p>
+                <p>O ETS2 Bot é um bot interativo para Discord que simula a experiência de gerenciamento de fretes no estilo Euro Truck Simulator 2. Aceite cargas, ganhe experiência, suba de nível!</p>
                 <a href="https://discord.com/oauth2/authorize?client_id=1358484284503097595" class="btn" target="_blank" rel="noopener noreferrer">Adicionar o Bot</a>
-            </div>
+            </section>
 
-            <div id="premium" class="tab-content hidden">
+            <!-- Premium -->
+            <section id="premium" class="tab-content hidden">
                 <h2>Assinatura Premium</h2>
                 <p>Leve sua experiência com o ETS2 Bot para o próximo nível com a assinatura premium!</p>
                 <ul>
@@ -45,9 +47,10 @@
                     <li>📞 Suporte prioritário.</li>
                 </ul>
                 <a href="https://discord.com/discovery/applications/1358484284503097595" class="btn" target="_blank" rel="noopener noreferrer" onclick="assinarPremium()">Assinar Agora</a>
-            </div>
+            </section>
 
-            <div id="comandos" class="tab-content hidden">
+            <!-- Comandos -->
+            <section id="comandos" class="tab-content hidden">
                 <h2>Comandos do Bot</h2>
                 <ul>
                     <li><strong>!frete &lt;número&gt;</strong> - Aceita um frete disponível pelo número listado.</li>
@@ -56,21 +59,24 @@
                     <li><strong>!xp</strong> - Mostra sua experiência, nível e cargo atual.</li>
                     <li><strong>!zerar</strong> - Zera a experiência de um membro (somente administradores).</li>
                 </ul>
-            </div>
+            </section>
 
-            <div id="termos" class="tab-content hidden">
+            <!-- Termos de Serviço -->
+            <section id="termos" class="tab-content hidden">
                 <h2>Termos de Serviço</h2>
                 <p>Leia os Termos de Serviço para entender como o ETS2 Bot funciona e suas responsabilidades ao utilizá-lo.</p>
                 <a href="https://docs.google.com/document/d/1eexl9novW3KowfE10HEwGK45GZ4P9CxLIUxkS9--WiU/edit?tab=t.0" class="btn" target="_blank" rel="noopener noreferrer">Ler Termos de Serviço</a>
-            </div>
+            </section>
 
-            <div id="privacidade" class="tab-content hidden">
+            <!-- Política de Privacidade -->
+            <section id="privacidade" class="tab-content hidden">
                 <h2>Política de Privacidade</h2>
                 <p>Saiba como suas informações são coletadas, usadas e protegidas ao usar o ETS2 Bot.</p>
                 <a href="https://docs.google.com/document/d/1XmGBRAUHTJSyagSZM9jasHJrdDlsFC7jRDHpy8n7_wU/edit?tab=t.bshm9kprn6si" class="btn" target="_blank" rel="noopener noreferrer">Ler Política de Privacidade</a>
-            </div>
+            </section>
 
-            <div id="monitor" class="tab-content hidden">
+            <!-- Monitoramento -->
+            <section id="monitor" class="tab-content hidden">
                 <h2>Monitoramento em Tempo Real</h2>
                 <p>Veja as informações do bot atualizadas em tempo real.</p>
                 <div id="real-time-monitor">
@@ -78,7 +84,7 @@
                     <p><strong>Servidores:</strong> <span id="real-time-servers">--</span></p>
                     <p><strong>Usuários:</strong> <span id="real-time-users">--</span></p>
                 </div>
-            </div>
+            </section>
         </main>
     </div>
 
