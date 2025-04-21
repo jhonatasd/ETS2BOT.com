@@ -1,51 +1,52 @@
-// Atualiza as estatísticas na página
+// Evento principal ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
-    carregarInfoBot(); // Carrega as informações do bot ao carregar a página
-    fetchBotStatus(); // Atualiza o status do bot ao carregar a página
+    atualizarInformacoesBot(); // Carrega e atualiza as informações do bot
+    setInterval(atualizarInformacoesBot, 10000); // Atualiza o status a cada 10 segundos
 });
 
-// Função para alternar entre abas
+// Alterna entre abas visíveis
 function showTab(tabId) {
-    const tabs = document.querySelectorAll(".tab-content");
-    tabs.forEach(tab => {
-        tab.style.display = "none"; // Esconde todas as abas
+    // Esconde todas as abas
+    document.querySelectorAll(".tab-content").forEach(tab => {
+        tab.style.display = "none";
     });
-    document.getElementById(tabId).style.display = "block"; // Mostra a aba selecionada
-}
 
-// Função para buscar informações do bot
-async function carregarInfoBot() {
-    try {
-        const response = await fetch("https://discord.com/oauth2/authorize?client_id=1358484284503097595"); // Substitua pela URL da sua API
-        const data = await response.json();
-
-        // Atualiza os elementos do site com as informações do bot
-        document.getElementById("statusBot").textContent = data.status === "online" ? "🟢 Online" : "🔴 Offline";
-        document.getElementById("servidoresBot").textContent = `Servidores: ${data.servidores}`;
-        document.getElementById("usuariosBot").textContent = `Usuários: ${data.usuarios}`;
-        document.getElementById("nomeBot").textContent = `Nome: ${data.nome}`;
-    } catch (error) {
-        console.error("Erro ao carregar informações do bot:", error);
-        document.getElementById("statusBot").textContent = "Erro ao carregar status.";
+    // Mostra a aba selecionada
+    const abaSelecionada = document.getElementById(tabId);
+    if (abaSelecionada) {
+        abaSelecionada.style.display = "block";
+    } else {
+        console.error(`Aba com ID ${tabId} não encontrada.`);
     }
 }
 
-// Função para monitorar o status do bot em tempo real
-async function fetchBotStatus() {
+// Busca e atualiza informações do bot na página
+async function atualizarInformacoesBot() {
+    const urlAPI = "https://discord.com/oauth2/authorize?client_id=1358484284503097595"; // Substitua pela URL real da API
+
     try {
-        const response = await fetch("https://discord.com/oauth2/authorize?client_id=1358484284503097595"); // Substitua pela URL da sua API
+        const response = await fetch(urlAPI);
+        if (!response.ok) throw new Error(`Erro na API: ${response.status}`);
+
         const data = await response.json();
 
-        // Atualiza os elementos no HTML com os dados da API
-        document.getElementById("status").textContent = `Status: ${data.status}`;
-        document.getElementById("servers").textContent = `Servidores: ${data.servers}`;
-        document.getElementById("users").textContent = `Usuários: ${data.users}`;
+        // Atualiza os elementos do DOM
+        atualizarElemento("statusBot", data.status === "online" ? "🟢 Online" : "🔴 Offline");
+        atualizarElemento("servidoresBot", `Servidores: ${data.servidores || "N/A"}`);
+        atualizarElemento("usuariosBot", `Usuários: ${data.usuarios || "N/A"}`);
+        atualizarElemento("nomeBot", `Nome: ${data.nome || "Desconhecido"}`);
     } catch (error) {
-        console.error("Erro ao buscar status do bot:", error);
-        document.getElementById("status").textContent = "Erro ao carregar status.";
+        console.error("Erro ao atualizar informações do bot:", error);
+        atualizarElemento("statusBot", "Erro ao carregar status.");
     }
 }
 
-// Atualiza o status do bot a cada 10 segundos
-setInterval(fetchBotStatus, 10000);
-fetchBotStatus();
+// Atualiza o conteúdo de um elemento HTML
+function atualizarElemento(id, conteudo) {
+    const elemento = document.getElementById(id);
+    if (elemento) {
+        elemento.textContent = conteudo;
+    } else {
+        console.warn(`Elemento com ID ${id} não encontrado.`);
+    }
+}
