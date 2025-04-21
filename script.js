@@ -1,17 +1,3 @@
-// Simulação de dados para estatísticas
-const stats = {
-    usuariosAtivos: 120,
-    cargasEntregues: 450,
-    servidores: 15
-};
-
-// Simulação de servidores onde o bot está presente
-const servidores = [
-    "Servidor 1 - Comunidade ETS2",
-    "Servidor 2 - Caminhoneiros BR",
-    "Servidor 3 - Simuladores Online"
-];
-
 // Atualiza as estatísticas na página
 document.addEventListener("DOMContentLoaded", () => {
     // Atualiza os dados de estatísticas
